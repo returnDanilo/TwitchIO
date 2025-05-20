@@ -1245,8 +1245,8 @@ class PartialUser:
         You can specify a clip that's from 5 seconds to 60 seconds in length. The URL is valid for up to 24 hours or until the clip is published, whichever comes first.
 
         Creating a clip is an asynchronous process that can take a short amount of time to complete.
-        To determine whether the clip was successfully created, call [`fetch_clips`][twitchio.user.PartialUser.fetch_clips] using the clip ID that this request returned.
-        If [`fetch_clips`][twitchio.user.PartialUser.fetch_clips] returns the clip, the clip was successfully created. If after 15 seconds [`fetch_clips`][twitchio.user.PartialUser.fetch_clips] hasn't returned the clip, assume it failed.
+        To determine whether the clip was successfully created, call :func:`PartialUser.fetch_clips() <twitchio.user.PartialUser.fetch_clips>` using the clip ID that this request returned.
+        If :func:`PartialUser.fetch_clips() <twitchio.user.PartialUser.fetch_clips>` returns the clip, the clip was successfully created. If after 15 seconds :func:`PartialUser.fetch_clips() <twitchio.user.PartialUser.fetch_clips>` hasn't returned the clip, assume it failed.
 
         .. note::
             Requires a user access token that includes the ``clips:edit`` scope.
@@ -1284,8 +1284,11 @@ class PartialUser:
 
         Fetches clips from the broadcaster's streams.
 
+        .. note::
+            To fetch a clip based on its ``id`` or ``game_id``, use :func:`PartialUser.fetch_clips() <twitchio.user.PartialUser.fetch_clips>` instead.
+
         Parameters
-        -----------
+        ----------
         started_at: datetime.datetime
             The start date used to filter clips.
             This can be timezone aware.
@@ -1305,7 +1308,7 @@ class PartialUser:
             Maximum number of total results to return. When this is set to None (default), then everything found is returned.
 
         Returns
-        --------
+        -------
         HTTPAsyncIterator[Clip]
         """
 
